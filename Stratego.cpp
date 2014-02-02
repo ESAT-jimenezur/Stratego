@@ -23,7 +23,7 @@
 ** Variables Globales **
 ************************/
 
-bool debug = true;
+bool debug = false;
 bool acercaDe = false;
 bool instrucciones = false;
 bool seEstaJugando = true;
@@ -153,7 +153,7 @@ void menuNuevaPartida(){
     printf("*****************************                                                                                                 *****************************");
     printf("*****************************                                                                                                 *****************************");
     printf("*****************************                                                                                                 *****************************");
-    printf("*****************************                                   6| Colocar fichas a mano                                      *****************************");
+    //printf("*****************************                                   6| Colocar fichas a mano                                      *****************************");
     printf("*****************************                                                                                                 *****************************");
     printf("*****************************                                                                                                 *****************************");
     printf("*****************************                                                                                                 *****************************");
@@ -215,7 +215,8 @@ void menuNuevaPartida(){
         break;
         case '6':
             //Colocar fichas a mano
-            juego(999); //Usamos el 999 para asegurarnos de que siempre podremos añadir nuevas jugadas
+            //Deshabilitado temporalmente
+            //juego(999); //Usamos el 999 para asegurarnos de que siempre podremos añadir nuevas jugadas
         break;
         case '7':
             menu();
@@ -1284,7 +1285,7 @@ void juego(int tipoInicio){
         setFichas(5);
     }else if(tipoInicio == 999){
         //A mano
-        setFichas(999);
+        //setFichas(999);
     }
 
     pintaParrilla();
