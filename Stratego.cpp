@@ -75,6 +75,12 @@ int arrayTemporalJugada[4][10] = {
 };
 
 
+
+
+/*****************************************************
+** Declaraciones Anticipadas de Metodos y Funciones **
+*****************************************************/
+
 void setColors(int texto, int fondo);
 void menuNuevaPartida();
 void menuOpciones();
