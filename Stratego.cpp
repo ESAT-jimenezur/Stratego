@@ -217,6 +217,7 @@ void menuNuevaPartida(){
             //Colocar fichas a mano
             //Deshabilitado temporalmente
             //juego(999); //Usamos el 999 para asegurarnos de que siempre podremos añadir nuevas jugadas
+            menuNuevaPartida();
         break;
         case '7':
             menu();
