@@ -589,13 +589,29 @@ void setFichas(int tipoJugada){
 
     seed(); //Iniciamos una nueva "Semilla" para que nos salgan aleatorios
 
-    // Primero vamos a rellenar la parte superior del tablero con las fichas aleatorias del pc
-    // Esto genera las fichas del PC Aleatorias
-    /* TODO */
-    for(int i = 0; i < 4; i++){
-        for(int j = 0; j < 10; j++){
-            tablero[i][j] = aleatorio(12) + 100;
+    // Primero vamos a rellenar la parte superior del tablero con las fichas del aleatorias
+    // Sacamos la jugada aleatoria de todas las que tenemos
+    int jugadaPC = aleatorio(5);
+
+    //Este bucle funciona al contrario de los otros, porque vamos a rellenar el tablero al reves, con el mismo array
+    int x=0, y=0;
+    for(int i = 3; i >= 0; i--){
+        for(int j = 9; j >= 0; j--){
+                if(jugadaPC == 0){
+                    tablero[i][j] = j_Defensiva[x][y] + 100;
+                }else if(jugadaPC == 1){
+                    tablero[i][j] = j_Agresiva[x][y] + 100;
+                }else if(jugadaPC == 2){
+                    tablero[i][j] = j_Defensa_Ciclon[x][y] + 100;
+                }else if(jugadaPC == 3){
+                    tablero[i][j] = j_Barricadas[x][y] + 100;
+                }else if(jugadaPC == 4){
+                    tablero[i][j] = j_Blitzkrieg[x][y] + 100;
+                }
+            y++;
         }
+            x++;
+            y = 0;
     }
 
     // Comprobamos el tipo de jugada, para asignar fichas
