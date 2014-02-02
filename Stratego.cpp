@@ -23,7 +23,7 @@
 ** Variables Globales **
 ************************/
 
-bool debug = false;
+bool debug = true;
 bool acercaDe = false;
 bool instrucciones = false;
 bool seEstaJugando = true;
@@ -53,6 +53,13 @@ int mariscales_J = 1, generales_J = 1, coroneles_J = 2, comandantes_J = 3, capit
 int mariscales_PC = 1, generales_PC = 1, coroneles_PC = 2, comandantes_PC = 3, capitanes_PC = 4, tenientes_PC = 4, sargentos_PC = 4, mineros_PC = 5, exploradores_PC = 8, espias_PC = 1, bombas_PC = 6, banderas_PC = 1;
 int fichas_J = 40;
 int fichas_PC = 40;
+
+int fichasAColocar [4][10] = {
+    0,0,0,0,0,0,0,0,0,0,
+    0,0,0,0,0,0,0,0,0,0,
+    0,0,0,0,0,0,0,0,0,0,
+    0,0,0,0,0,0,0,0,0,0
+};
 
 int tablero[10][10] = {
     0,0,0,0,0,0,0,0,0,0,
@@ -134,24 +141,24 @@ void menuNuevaPartida(){
     printf("*****************************                                                                                                 *****************************");
     printf("*****************************                                                                                                 *****************************");
     printf("*****************************                                                                                                 *****************************");
-    printf("*****************************                                   3| Colocar Fichas                                             *****************************");
+    printf("*****************************                                   3| Defensa Ciclon                                             *****************************");
     printf("*****************************                                                                                                 *****************************");
     printf("*****************************                                                                                                 *****************************");
     printf("*****************************                                                                                                 *****************************");
-    printf("*****************************                                   4| Volver al Menu                                             *****************************");
+    printf("*****************************                                   4| Barricadas                                                 *****************************");
+    printf("*****************************                                                                                                 *****************************");
+    printf("*****************************                                                                                                 *****************************");
+    printf("*****************************                                                                                                 *****************************");
+    printf("*****************************                                   5| Blitzkrieg                                                 *****************************");
+    printf("*****************************                                                                                                 *****************************");
+    printf("*****************************                                                                                                 *****************************");
+    printf("*****************************                                                                                                 *****************************");
+    printf("*****************************                                   6| Colocar fichas a mano                                      *****************************");
     printf("*****************************                                                                                                 *****************************");
     printf("*****************************                                                                                                 *****************************");
     printf("*****************************                                                                                                 *****************************");
     printf("*****************************                                                                                                 *****************************");
-    printf("*****************************                                                                                                 *****************************");
-    printf("*****************************                                                                                                 *****************************");
-    printf("*****************************                                                                                                 *****************************");
-    printf("*****************************                                                                                                 *****************************");
-    printf("*****************************                                                                                                 *****************************");
-    printf("*****************************                                                                                                 *****************************");
-    printf("*****************************                                                                                                 *****************************");
-    printf("*****************************                                                                                                 *****************************");
-    printf("*****************************                                                                                                 *****************************");
+    printf("*****************************                                   7| Volver al menu                                             *****************************");
     printf("*****************************                                                                                                 *****************************");
     printf("*****************************                                                                                                 *****************************");
     printf("*****************************                                                                                                 *****************************");
@@ -198,10 +205,23 @@ void menuNuevaPartida(){
             juego(2); //Jugada Agresiva
         break;
         case '3':
-            juego(3); //Colocar Fichas
+            juego(3); //Defensa Ciclon
         break;
         case '4':
+            juego(4); //Barricadas
+        break;
+        case '5':
+            juego(5); //Blitzkrieg
+        break;
+        case '6':
+            //Colocar fichas a mano
+            juego(999); //Usamos el 999 para asegurarnos de que siempre podremos añadir nuevas jugadas
+        break;
+        case '7':
             menu();
+        break;
+        default: //Llamamos a este metodo si no pulsamos alguna de las teclas anteriores
+            menuNuevaPartida();
         break;
     }
 
@@ -586,7 +606,6 @@ void setFichas(int tipoJugada){
             setColors(0, 15);
             cursorPos(115, 1);
             printf("Estrategia Defensiva");
-
             for(int i = 6; i < 10; i++){
                 for(int j = 0; j < 10; j++){
                     tablero[i][j] = j_Defensiva[i - 6][j];
@@ -603,11 +622,37 @@ void setFichas(int tipoJugada){
                 }
             }
         break;
-        case 3:
-
-
-
-
+        case 3: //Defensa Ciclon
+            setColors(0, 15);
+            cursorPos(115, 1);
+            printf("Defensa Ciclon");
+            for(int i = 6; i < 10; i++){
+                for(int j = 0; j < 10; j++){
+                    tablero[i][j] = j_Defensa_Ciclon[i - 6][j];
+                }
+            }
+        break;
+        case 4: //Barricadas
+            setColors(0, 15);
+            cursorPos(115, 1);
+            printf("Barricadas");
+            for(int i = 6; i < 10; i++){
+                for(int j = 0; j < 10; j++){
+                    tablero[i][j] = j_Barricadas[i - 6][j];
+                }
+            }
+        break;
+        case 5: //Blitzkrieg
+            setColors(0, 15);
+            cursorPos(115, 1);
+            printf("Blitzkrieg!");
+            for(int i = 6; i < 10; i++){
+                for(int j = 0; j < 10; j++){
+                    tablero[i][j] = j_Blitzkrieg[i - 6][j];
+                }
+            }
+        break;
+        case 999: //Colocamos fichas a mano
 
         break;
     }
@@ -1213,8 +1258,17 @@ void juego(int tipoInicio){
         //Iniciamos la jugada Agresiva
         setFichas(2);
     }else if(tipoInicio == 3){
-        //Ponemos las fichas a mano
+        //Defensa Ciclon
         setFichas(3);
+    }else if(tipoInicio == 4){
+        //Barricadas
+        setFichas(4);
+    }else if(tipoInicio == 5){
+        //Blitzkrieg
+        setFichas(5);
+    }else if(tipoInicio == 999){
+        //A mano
+        setFichas(999);
     }
 
     pintaParrilla();
