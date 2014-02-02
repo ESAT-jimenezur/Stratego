@@ -75,16 +75,22 @@ int arrayTemporalJugada[4][10] = {
 };
 
 
-
-void juego(int tipoInicio);
+void setColors(int texto, int fondo);
 void menuNuevaPartida();
 void menuOpciones();
 void menu();
+void pantallaResultados(int ganador);
+void setFichas(int tipoJugada);
+void pintaCasillasInaccesibles();
+void pintaParrilla();
+void movimientoCursor();
+void movimientoPC();
+void compruebaCombate(int turno, int valorAtacante, int posX_Inicio, int posY_Inicio, int posX_Destino, int posY_Destino);
+void modoDebug();
 void logs(int log);
 void logFichas();
-void movimientoPC();
-void pantallaResultados(int ganador);
-void compruebaCombate(int turno, int valorAtacante, int posX_Inicio, int PosY_Inicio, int PosX_Destino, int posY_Destino);
+void juego(int tipoInicio);
+int main();
 
 
 void setColors(int texto, int fondo){
@@ -1005,38 +1011,6 @@ void compruebaCombate(int turno, int valorAtacante, int posX_Inicio, int posY_In
     }else{
 
     }
-}
-
-int atacar(int atacante, int receptor){
-    bool ganador;
-
-    //Definimos los tipos de batalla, para saber quien gana.
-
-    /** TODO
-        - Comprobar que los valores sean correctos
-        - Comprobar el caso de partida ganada
-    **/
-
-    if(atacante == 1 && receptor == 12){ // En este caso, el atacante, usando el espia ha atacado al mariscal.
-        ganador = 1; // Gana el atacante
-    }
-
-
-    if(receptor == 100){ // Si el atacante toca la bandera
-        ganador = 1;
-        //TODO
-        //partidaGanada = true;
-    }
-
-    if(receptor == 99){ // 99 Es la bomba
-        if(atacante == 3){ // Tenemos un minero desactivador de bombas!
-            ganador = 1; // Bomba desactivada!
-        }else{
-            ganador = 0; // Te has chocado con la bomba, amigo!
-        }
-    }
-
-    return ganador;
 }
 
 void modoDebug(){
