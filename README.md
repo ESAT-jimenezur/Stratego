@@ -3,7 +3,7 @@ Stratego
 
 Stratego 1º Programación ESAT (Enero 2014)
 
-Made by Jose Luis Jimenez Urbano [Twitter](https://twitter.com/iJos) | [GitHub]<https://github.com/iJos>, licensed under MIT license.
+Made by Jose Luis Jimenez Urbano [Twitter](https://twitter.com/iJos) | [GitHub](https://github.com/iJos), licensed under MIT license.
 
 
 Dependencies
