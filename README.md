@@ -9,7 +9,8 @@ Made by Jose Luis Jimenez Urbano [Twitter](https://twitter.com/iJos) | [GitHub](
 Dependencies
 ----------
 
-Apart from the libs included in "Libs" folder, you need to link another lib to your compiler.
+Apart from the libs included in "Libs" folder, you need to link another library to your compiler.
 
-This lib is "iJos.h" and you can get it from here: <https://github.com/ESAT-jimenezur/Programacion/tree/master/Libs>
+This library is "iJos.h" and you can get it from here: 
+<https://github.com/ESAT-jimenezur/Programacion/tree/master/Libs>
 
